@@ -43,12 +43,18 @@ class SalesEngine
     sales_engine = SalesEngine.new
     repository_loader = RepositoryLoaders.new(sales_engine)
 
-    sales_engine.items = repository_loader.load_items_into_repository(items_rows)
-    sales_engine.merchants = repository_loader.load_merchants_into_repository(merchants_rows)
-    sales_engine.invoices = repository_loader.load_invoices_into_repository(invoices_rows)
-    sales_engine.invoice_items = repository_loader.load_invoice_items_into_repository(invoice_items_rows)
-    sales_engine.transactions = repository_loader.load_transactions_into_repository(transactions_rows)
-    sales_engine.customers = repository_loader.load_customers_into_repository(customers_rows)
+    sales_engine.items = repository_loader.load_items_into_repository(
+                                                            items_rows)
+    sales_engine.merchants = repository_loader.load_merchants_into_repository(
+                                                                merchants_rows)
+    sales_engine.invoices = repository_loader.load_invoices_into_repository(
+                                                               invoices_rows)
+    sales_engine.invoice_items = repository_loader.load_invoice_items_into_repository(
+                                                                    invoice_items_rows)
+    sales_engine.transactions = repository_loader.load_transactions_into_repository(
+                                                                   transactions_rows)
+    sales_engine.customers = repository_loader.load_customers_into_repository(
+                                                                customers_rows)
 
     sales_engine
   end
