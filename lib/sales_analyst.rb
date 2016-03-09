@@ -130,12 +130,7 @@ class SalesAnalyst
     @se.invoices.repository.count/number_of_week_days
   end
 
-  def average_invoices_per_day_standard_deviation # need to refactor
-    # variance = @se.invoices.count_of_invoices_for_day_hash.values.map do |value|
-    #       (value - average_invoices_per_day) ** 2
-    #     end.reduce(:+)/(7.to_f - 1)
-    # Math.sqrt(variance).round(2)
-
+  def average_invoices_per_day_standard_deviation
     find_standard_deviation(@se.invoices.count_of_invoices_for_day_hash, average_invoices_per_day, 7)
   end
 
@@ -176,7 +171,6 @@ class SalesAnalyst
   def merchants_with_only_one_item
     @se.merchants.all.find_all { |merchant| merchant.items.count == 1 }
   end
-
 
   def merchants_with_only_one_item_registered_in_month(month)
     @se.merchants.find_merchants_created_in_month(month).find_all do |merchant|
