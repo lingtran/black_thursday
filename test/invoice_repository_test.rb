@@ -7,8 +7,6 @@ require_relative '../lib/invoice'
 require_relative '../lib/invoice_repository'
 require_relative '../lib/sales_engine'
 
-
-
 class InvoiceRepositoryClassTest < Minitest::Test
 
 attr_accessor :invoices, :se, :invoice_1, :invoice_2, :invoice_3, :invoice_4, :invoice_5, :invoice_6, :invoice_7, :invoice_8, :invoice_9
@@ -113,8 +111,6 @@ attr_accessor :invoices, :se, :invoice_1, :invoice_2, :invoice_3, :invoice_4, :i
   end
 
   def test_can_find_all_by_status
-    # binding.pry
-
     # se = SalesEngine.from_csv({
     #   :items     => "./test/fake_items.csv",
     #   :merchants => "./test/fake_merchants.csv",
@@ -124,6 +120,12 @@ attr_accessor :invoices, :se, :invoice_1, :invoice_2, :invoice_3, :invoice_4, :i
     # invoices = se.invoices
     assert_equal 5, invoices.find_all_by_status("shipped").count
     assert_equal [], invoices.find_all_by_status("completed").map { |item| item.inspect }
+  end
+
+  def test_can_aggregate_invoices_for_each_week_day
+    count_of_invoices_for_day = invoices.count_of_invoices_for_day_hash
+    assert_equal Hash, count_of_invoices_for_day.class
+    assert_equal "{\"Saturday\"=>2, \"Friday\"=>4, \"Wednesday\"=>1, \"Monday\"=>3, \"Sunday\"=>1, \"Tuesday\"=>1}", count_of_invoices_for_day.to_s
   end
 
   def test_can_find_all_by_date
