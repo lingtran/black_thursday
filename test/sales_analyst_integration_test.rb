@@ -261,6 +261,11 @@ class SalesAnalystTest < Minitest::Test
     assert_equal BigDecimal, sales_analyst.revenue_by_merchant(12334194).class
   end
 
+  def test_can_rank_merchant_by_revenue
+    assert_equal Array, sales_analyst.merchants_ranked_by_revenue.class
+    assert_equal 12334634, sales_analyst.merchants_ranked_by_revenue.first.id
+  end
+
   def test_can_find_most_sold_item_for_merchant
     assert sales_analyst.most_sold_item_for_merchant(12334189).map { |item| item.id }.include?(263524984)
     assert_equal 263549386, sales_analyst.most_sold_item_for_merchant(12334768).first.id
@@ -271,5 +276,4 @@ class SalesAnalystTest < Minitest::Test
   def test_can_find_item_that_generates_most_revenue_for_a_merchant
     assert_equal 263516130, sales_analyst.best_item_for_merchant(12334189).id
   end
-
 end

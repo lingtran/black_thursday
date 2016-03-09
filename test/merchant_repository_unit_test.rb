@@ -67,7 +67,6 @@ class MerchantRepositoryTest < Minitest::Test
       :transactions => 'data/transactions.csv',
       :customers => 'data/customers.csv'
     })
-
     assert_equal 467, sales_engine.merchants.merchants_with_failed_transaction.count
   end
 
