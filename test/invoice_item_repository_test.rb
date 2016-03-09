@@ -48,4 +48,11 @@ class InvoiceItemRepositoryClassTest < Minitest::Test
   def test_we_can_find_all_by_invoice_id
     assert_equal [1, 2], @invoice_items.find_all_by_invoice_id(1).map { |invoice_item| invoice_item.id}
   end
+
+  def test_can_find_all_by_date
+    date = Time.parse('2012-03-27 14:54:09 UTC')
+    assert_equal 2, @invoice_items.find_all_by_date(date).count
+    assert_equal [1,2], @invoice_items.find_all_by_date(date).map {|invoice_item| invoice_item.id}
+  end
+
 end
