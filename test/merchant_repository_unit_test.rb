@@ -59,7 +59,16 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_can_find_merchants_with_pending_invoices
-    assert_equal 467, @mr.merchants_with_failed_transaction
+    sales_engine = SalesEngine.from_csv({
+      :items     => "data/items.csv",
+      :merchants => "data/merchants.csv",
+      :invoices => "data/invoices.csv",
+      :invoice_items => 'data/invoice_items.csv',
+      :transactions => 'data/transactions.csv',
+      :customers => 'data/customers.csv'
+    })
+
+    assert_equal 467, sales_engine.merchants.merchants_with_failed_transaction.count
   end
 
 end
