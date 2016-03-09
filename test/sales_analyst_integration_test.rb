@@ -32,7 +32,6 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_sales_analyst_can_be_instantiated_with_sales_engine
-
     assert @sa
   end
 
@@ -63,8 +62,8 @@ class SalesAnalystTest < Minitest::Test
     #   :invoices => "data/invoices.csv"
     # })
     # sa = SalesAnalyst.new(se)
-    assert_equal 474, sa.find_sample(se.merchants.all)
-    assert_equal 1366, sa.find_sample(se.items.all)
+    assert_equal 474, sa.find_sample(se.merchants.all.count)
+    assert_equal 1366, sa.find_sample(se.items.all.count)
   end
 
   def test_can_find_standard_deviation_for_average_items_per_merchant_standard_deviation
@@ -160,7 +159,7 @@ class SalesAnalystTest < Minitest::Test
 
     })
     sa = SalesAnalyst.new(se)
-    assert_equal 0.69, sa.find_standard_deviation(se.items.item_unit_price_hash, sa.average_price_of_all_items, se.items.all)
+    assert_equal 0.69, sa.find_standard_deviation(se.items.item_unit_price_hash, sa.average_price_of_all_items, se.items.all.count)
   end
 
   def test_can_calculate_average_item_price_standard_deviation
@@ -234,7 +233,7 @@ class SalesAnalystTest < Minitest::Test
     #   :invoices => "data/invoices.csv"
     # })
     # sa = SalesAnalyst.new(sales_engine)
-    assert_equal 3.29, sa.find_standard_deviation(sales_engine.merchants.invoice_count_per_merchant_hash, sa.average_invoices_per_merchant, sales_engine.merchants.all)
+    assert_equal 3.29, sa.find_standard_deviation(sales_engine.merchants.invoice_count_per_merchant_hash, sa.average_invoices_per_merchant, sales_engine.merchants.all.count)
   end
 
   def test_can_calculate_average_invoices_per_merchant_standard_deviation
@@ -319,17 +318,6 @@ class SalesAnalystTest < Minitest::Test
 
     expected = sa.average_invoices_per_day
     assert_equal 712, expected
-  end
-
-  def test_can_aggregate_invoices_for_each_week_day
-    # sales_engine = SalesEngine.from_csv({
-    #   :items     => "data/items.csv",
-    #   :merchants => "data/merchants.csv",
-    #   :invoices => "data/invoices.csv"
-    # })
-    # sa = SalesAnalyst.new(sales_engine)
-
-    assert_equal Hash, sa.invoices_for_day_hash.class
   end
 
   def test_can_calculate_average_invoices_per_day_standard_deviation
@@ -430,8 +418,7 @@ class SalesAnalystTest < Minitest::Test
   end
 
   def test_can_find_item_that_generates_most_revenue_for_a_merchant
-    assert_equal 263516130, sa.best_item_for_merchant(12334189).id 
-
+    assert_equal 263516130, sa.best_item_for_merchant(12334189).id
   end
 
 

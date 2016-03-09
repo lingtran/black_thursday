@@ -19,7 +19,7 @@ class SalesAnalyst
   end
 
   def find_sample(sample)
-    sample.count.to_f - 1
+    sample.to_f - 1
   end
 
   def find_standard_deviation(elements, average, sample)
@@ -28,7 +28,7 @@ class SalesAnalyst
   end
 
   def average_items_per_merchant_standard_deviation
-    find_standard_deviation(@se.merchants.item_count_per_merchant_hash, average_items_per_merchant, @se.merchants.all)
+    find_standard_deviation(@se.merchants.item_count_per_merchant_hash, average_items_per_merchant, @se.merchants.all.count)
   end
 
   def one_std_dev_for_average_items_per_merchant
@@ -77,7 +77,7 @@ class SalesAnalyst
   end
 
   def average_item_price_standard_deviation
-    find_standard_deviation(@se.items.item_unit_price_hash, average_price_of_all_items, @se.items.all)
+    find_standard_deviation(@se.items.item_unit_price_hash, average_price_of_all_items, @se.items.all.count)
   end
 
   def two_std_dev_for_average_item_price
@@ -96,7 +96,7 @@ class SalesAnalyst
   end
 
   def average_invoices_per_merchant_standard_deviation
-    find_standard_deviation(@se.merchants.invoice_count_per_merchant_hash, average_invoices_per_merchant, @se.merchants.all)
+    find_standard_deviation(@se.merchants.invoice_count_per_merchant_hash, average_invoices_per_merchant, @se.merchants.all.count)
   end
 
   def two_std_dev_average_invoice_count
@@ -131,10 +131,12 @@ class SalesAnalyst
   end
 
   def average_invoices_per_day_standard_deviation # need to refactor
-    variance = @se.invoices.count_of_invoices_for_day_hash.values.map do |value|
-          (value - average_invoices_per_day) ** 2
-        end.reduce(:+)/(7.to_f - 1)
-    Math.sqrt(variance).round(2)
+    # variance = @se.invoices.count_of_invoices_for_day_hash.values.map do |value|
+    #       (value - average_invoices_per_day) ** 2
+    #     end.reduce(:+)/(7.to_f - 1)
+    # Math.sqrt(variance).round(2)
+
+    find_standard_deviation(@se.invoices.count_of_invoices_for_day_hash, average_invoices_per_day, 7)
   end
 
   def one_std_dev_above_average_invoice_count
