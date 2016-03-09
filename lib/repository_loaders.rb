@@ -24,12 +24,11 @@ class RepositoryLoaders
   def load_merchants_into_repository(merchants_rows)
     merchants = MerchantRepository.new(@sales_engine)
     merchants_rows.each do |row|
-      merchants.repository << Merchant.new(@sales_engine, {:id => row[
-                                             :id],
-                                             :name => row[:name],
-                                             :created_at => row[:created_at],
-                                             :updated_at => row[:updated_at]
-                                             })
+      merchants.repository << Merchant.new(@sales_engine, {:id => row[:id],
+                                         :name => row[:name],
+                                         :created_at => row[:created_at],
+                                         :updated_at => row[:updated_at]
+                                         })
     end
     merchants
   end
