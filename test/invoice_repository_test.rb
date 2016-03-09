@@ -111,13 +111,6 @@ attr_accessor :invoices, :se, :invoice_1, :invoice_2, :invoice_3, :invoice_4, :i
   end
 
   def test_can_find_all_by_status
-    # se = SalesEngine.from_csv({
-    #   :items     => "./test/fake_items.csv",
-    #   :merchants => "./test/fake_merchants.csv",
-    #   :invoices => "./test/fake_invoices.csv"
-    # })
-    #
-    # invoices = se.invoices
     assert_equal 5, invoices.find_all_by_status("shipped").count
     assert_equal [], invoices.find_all_by_status("completed").map { |item| item.inspect }
   end
@@ -129,7 +122,7 @@ attr_accessor :invoices, :se, :invoice_1, :invoice_2, :invoice_3, :invoice_4, :i
   end
 
   def test_can_find_all_by_date
-    date = Time.parse("2014-10-06")
+    date = Time.parse("2014-05-06")
     assert_equal 1, invoices.find_all_by_date(date).count
     assert_equal [12], invoices.find_all_by_date(date).map {|invoice| invoice.id}
   end
