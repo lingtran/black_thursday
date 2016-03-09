@@ -1,3 +1,4 @@
+require_relative '../test/test_helper'
 
 require 'pry'
 require 'minitest/autorun'

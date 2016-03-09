@@ -1,4 +1,4 @@
-
+require_relative '../test/test_helper'
 gem 'minitest', '~> 5.2'
 require 'minitest/autorun'
 require 'minitest/pride'
