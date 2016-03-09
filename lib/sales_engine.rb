@@ -44,7 +44,7 @@ class SalesEngine
     repository_loader = RepositoryLoaders.new(sales_engine)
 
     sales_engine.items = repository_loader.load_items_into_repository(
-                                                            items_rows)
+                                                                items_rows)
     sales_engine.merchants = repository_loader.load_merchants_into_repository(
                                                                 merchants_rows)
     sales_engine.invoices = repository_loader.load_invoices_into_repository(

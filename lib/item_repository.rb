@@ -31,7 +31,7 @@ class ItemRepository
   end
 
   def find_all_by_price(price)
-    x =repository.find_all do |item|
+    repository.find_all do |item|
       item.unit_price.to_f == price
     end
   end
@@ -49,11 +49,11 @@ class ItemRepository
   end
 
   def item_unit_price_hash
-    repository.each_with_object([]) {|item, array| array << [item.id, item.unit_price]}.to_h
-
+    repository.each_with_object([]) do |item, array|
+      array << [item.id, item.unit_price]
+    end.to_h
   end
 
   def inspect
   end
-
 end

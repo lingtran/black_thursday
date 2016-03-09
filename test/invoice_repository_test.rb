@@ -116,7 +116,7 @@ attr_accessor :invoices, :se, :invoice_1, :invoice_2, :invoice_3, :invoice_4, :i
   end
 
   def test_can_aggregate_invoices_for_each_week_day
-    count_of_invoices_for_day = invoices.count_of_invoices_for_day_hash
+    count_of_invoices_for_day = invoices.count_of_invoices_for_day
     assert_equal Hash, count_of_invoices_for_day.class
     assert_equal "{\"Saturday\"=>2, \"Friday\"=>4, \"Wednesday\"=>1, \"Monday\"=>3, \"Sunday\"=>1, \"Tuesday\"=>1}", count_of_invoices_for_day.to_s
   end
