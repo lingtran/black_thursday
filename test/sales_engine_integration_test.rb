@@ -64,7 +64,5 @@ class SalesEngineTest < Minitest::Test
 
   def test_can_find_merchants_by_customer_id
     assert_equal [12336801, 12335971, 12335853, 12334969, 12335846, 12335072, 12334628], @sales_engine.customers.find_by_id(523).merchants.map { |merchant| merchant.id }
-
   end
-
 end

@@ -23,7 +23,6 @@ class ItemClassTest < Minitest::Test
   end
 
   def test_can_send_in_item_information_and_it_is_a_part_of_the_item_and_can_be_inspected
-    #Using the item created in setup
     expected = "  id: 2342
     name: MY Item
     description: Best item ever
@@ -62,7 +61,4 @@ class ItemClassTest < Minitest::Test
     assert_equal Time.new(2009, 02, 07).to_s, @item.created_at.to_s
     assert_equal Time.new(2009, 02, 07).to_s, @item.updated_at.to_s
   end
-
-
-
 end

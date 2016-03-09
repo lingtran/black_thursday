@@ -204,7 +204,6 @@ class SalesAnalystTest < Minitest::Test
     assert_equal Float, sales_analyst.average_invoices_per_day_standard_deviation.class
   end
 
-
   def test_can_calculate_one_std_dev_above_average_invoice_count_per_day
     assert_equal 730.07, sales_analyst.one_std_dev_above_average_invoice_count
     assert_equal Float, sales_analyst.one_std_dev_above_average_invoice_count.class
@@ -237,7 +236,6 @@ class SalesAnalystTest < Minitest::Test
     date = Time.parse("2009-02-07")
     assert_equal 21067.77, sales_analyst.total_revenue_by_date(date).to_f.round(2)
   end
-
 
   def test_can_calculate_top_x_performing_merchants_in_terms_of_revenue
     assert_equal 20, sales_analyst.top_revenue_earners.count

@@ -45,7 +45,7 @@ class MerchantRepository
     all.map { |merchant| [merchant.id, merchant.invoices] }.to_h
   end
 
-  def invoice_count_per_merchant_hash 
+  def invoice_count_per_merchant_hash
     invoices_per_merchant_hash.map { |merchant, invoices| [merchant, invoices.count]}.to_h
   end
 

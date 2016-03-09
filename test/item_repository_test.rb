@@ -36,7 +36,6 @@ class ItemRepositoryClassTest < Minitest::Test
     @item_repository = ItemRepository.new(@sales_engine)
 
     @items.each { |item| @item_repository.repository << item }
-    # binding.pry
   end
 
   def test_can_initialize_an_item_repository_and_it_exists

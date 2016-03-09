@@ -46,7 +46,7 @@ class InvoiceRepository
     all.group_by { |invoice| invoice.created_at.strftime('%A')}
   end
 
-  def count_of_invoices_for_day_hash
+  def count_of_invoices_for_day
     invoices_for_day_hash.map { |week_day, invoices| [week_day, invoices.count] }.to_h
   end
 
