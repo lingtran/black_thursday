@@ -33,19 +33,19 @@ class MerchantRepository
     end
   end
 
-  def items_per_merchant_hash #need test?
+  def items_per_merchant_hash
     all.map { |merchant| [merchant.id, merchant.items] }.to_h
   end
 
-  def item_count_per_merchant_hash # need test?
+  def item_count_per_merchant_hash
     items_per_merchant_hash.map { |merchant, items| [merchant, items.count] }.to_h
   end
 
-  def invoices_per_merchant_hash # need test?
+  def invoices_per_merchant_hash
     all.map { |merchant| [merchant.id, merchant.invoices] }.to_h
   end
 
-  def invoice_count_per_merchant_hash # need test?
+  def invoice_count_per_merchant_hash 
     invoices_per_merchant_hash.map { |merchant, invoices| [merchant, invoices.count]}.to_h
   end
 
