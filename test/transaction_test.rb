@@ -9,7 +9,6 @@ require_relative '../lib/sales_engine'
 class TransactionClassTest < Minitest::Test
 
   def setup
-    # sales_engine = "sales engine"
     @sales_engine = SalesEngine.from_csv({
       :items     => 'data/items.csv',
       :merchants => 'data/merchants.csv',

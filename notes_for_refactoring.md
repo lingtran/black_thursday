@@ -31,10 +31,10 @@ Inventory: Average calcs
 
 - average_invoices_per_day => invoices repository
 - invoices_for_day_hash => invoices repository
-- count_of_invoices_for_day_hash => invoices_for_day_hash
-- average_invoices_per_day_standard_deviation => count_of_invoices_for_day_hash, average_invoices_per_day
+- count_of_invoices_for_day => invoices_for_day_hash
+- average_invoices_per_day_standard_deviation => count_of_invoices_for_day, average_invoices_per_day
 - one_std_dev_above_average_invoice_count => average_invoices_per_day_standard_deviation, average_invoices_per_day
-- top_days_by_invoice_count => one_std_dev_above_average_invoice_count, count_of_invoices_for_day_hash
+- top_days_by_invoice_count => one_std_dev_above_average_invoice_count, count_of_invoices_for_day
 - invoice_status => invoice repository
 
 
